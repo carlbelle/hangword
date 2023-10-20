@@ -58,7 +58,6 @@ function makeGuess(letter) {
         }
 
         // Display the guessed letters and remaining attempts
-        displayClickableLetters();
         document.getElementById("guesses-container").textContent = `Guessed letters: ${guessedLetters.join(", ")}`;
         document.getElementById("attempts-container").textContent = `Attempts remaining: ${attempts}`;
 
@@ -70,6 +69,9 @@ function makeGuess(letter) {
             alert(`Sorry, you lost. The correct word was "${selectedWord}".`);
             resetGame();
         }
+
+        // Update clickable letters after making a guess
+        displayClickableLetters();
     } else {
         alert("You already guessed that letter. Try another one.");
     }
@@ -78,7 +80,6 @@ function makeGuess(letter) {
 // Function to update the displayed word with correctly guessed letters
 function updateDisplayWord() {
     displayWordWithUnderscores();
-    displayClickableLetters();
 }
 
 // Function to display underscores for each letter in the word
@@ -94,22 +95,4 @@ function displayWordWithUnderscores() {
     document.getElementById("word-container").textContent = displayWord.trim(); // Trim to remove trailing space
 }
 
-// Function to check if the game is won
-function isGameWon() {
-    return document.getElementById("word-container").textContent === selectedWord;
-}
-
-// Function to reset the game
-function resetGame() {
-    // Reset variables
-    guessedLetters = [];
-    attempts = 6;
-    selectedWord = words[Math.floor(Math.random() * words.length)];
-
-    // Reset display
-    initializeGame();
-    document.getElementById("guesses-container").textContent = "";
-}
-
-// Initialize the game when the page loads
-initializeGame();
+// Function to check if the game
