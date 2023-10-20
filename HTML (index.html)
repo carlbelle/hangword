@@ -1,57 +1,26 @@
-import random
-
-def generate_word():
-    # List of words to choose from
-    words = ["TYLER", "PYTHON", "GITHUB", "PROGRAM"]
-
-    # Select a random word
-    return random.choice(words)
-
-def display_word(word, guessed_letters):
-    # Display the word with guessed letters revealed
-    display = ""
-    for letter in word:
-        if letter in guessed_letters:
-            display += letter + " "
-        else:
-            display += "_ "
-    return display.strip()
-
-def wordle_game():
-    # Initialize the game
-    target_word = generate_word().upper()
-    guessed_letters = set()
-    max_attempts = 6
-    attempts = 0
-
-    print("Welcome to Wordle!")
-    print("Try to guess the word.")
-
-    while True:
-        print("\nAttempts left:", max_attempts - attempts)
-        print(display_word(target_word, guessed_letters))
-
-        guess = input("Enter a letter: ").upper()
-
-        # Check if the guessed letter is in the word
-        if guess in target_word:
-            print("Good guess!")
-
-            # Check if the word is fully guessed
-            if set(target_word) <= guessed_letters:
-                print("Congratulations! You guessed the word:", target_word)
-                break
-        else:
-            print("Incorrect guess. Try again.")
-            attempts += 1
-
-        # Add the guessed letter to the set
-        guessed_letters.add(guess)
-
-        # Check if the player has run out of attempts
-        if attempts == max_attempts:
-            print("Sorry, you ran out of attempts. The word was:", target_word)
-            break
-
-if __name__ == "__main__":
-    wordle_game()
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Hangman Game</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Hangman Game</h1>
+        <div id="word-container">
+            <!-- The word will be displayed here with underscores -->
+        </div>
+        <div id="guesses-container">
+            <!-- Guessed letters will be displayed here -->
+        </div>
+        <div id="attempts-container">
+            <!-- Number of attempts remaining will be displayed here -->
+        </div>
+        <input type="text" id="guess-input" placeholder="Enter a letter">
+        <button onclick="makeGuess()">Guess</button>
+    </div>
+    <script src="hangman.js"></script>
+</body>
+</html>
