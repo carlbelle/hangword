@@ -9,17 +9,11 @@
 <body>
     <div class="container">
         <h1>Hangman Game</h1>
-        <div id="word-container">
-            <!-- The word will be displayed here with underscores -->
-        </div>
-        <div id="guesses-container">
-            <!-- Guessed letters will be displayed here -->
-        </div>
-        <div id="attempts-container">
-            <!-- Number of attempts remaining will be displayed here -->
-        </div>
-        <input type="text" id="guess-input" placeholder="Enter a letter">
-        <button onclick="makeGuess()">Guess</button>
+        <div id="word-container"></div>
+        <div id="letters-container"></div>
+        <div id="guesses-container"></div>
+        <div id="attempts-container"></div>
+        <button onclick="resetGame()">Reset Game</button>
     </div>
     <script src="hangman.js"></script>
 </body>
